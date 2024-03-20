@@ -29,7 +29,8 @@ def MovePaddle():
         print("Top of Screen")
         PadA = PadA.move(0,2)
         PadASpeed = 0
-    
+    #Add Bottom of Paddle Code here
+        
     PadA = PadA.move(0, PadASpeed)
     pygame.draw.rect(window, white, PadA)
 
