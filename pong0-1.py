@@ -1,5 +1,17 @@
 import pygame as pygame
 
+def drawCenterLine():
+    global screenWidth, screenHeight
+    pygame.draw.line(window, white, (screenWidth//2, 0), (screenWidth//2, screenHeight))
+
+def drawScore(font):
+    global scoreA, scoreB
+    
+    text=font.render(str(scoreA), True, white)
+    window.blit(text, (200, 30))
+    text = font.render(str(scoreB), True, white)
+    window.blit(text, (700, 30))
+
 def MoveBall():
     global ballSpeedx, ballSpeedy, ballLocation, ball
     
@@ -52,6 +64,12 @@ ball = pygame.Rect(ballLocation, (radius, radius))
 PadA = pygame.Rect((0,150), (50,300))
 PadASpeed = 0
 
+scoreA=0
+scoreB=0
+
+pygame.font.init()
+font = pygame.font.Font(None,24)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
@@ -70,6 +88,9 @@ while True:
     window.fill(black)
     MoveBall()
     MovePaddle()
+    drawCenterLine()
+    drawScore(font)
     pygame.display.flip()
+    
     #check quit event
     #check up, down, spacebar event
