@@ -13,13 +13,15 @@ def drawScore(font):
     window.blit(text, (700, 30))
 
 def MoveBall():
-    global ballSpeedx, ballSpeedy, ballLocation, ball
+    global scoreA, scoreB, ballSpeedx, ballSpeedy, ballLocation, ball
     
     if ballLocation[0] > screenWidth:
         ballSpeedx = -ballSpeedx
+        scoreA = scoreA + 1
     
     if ballLocation[0] < 0:
         ballSpeedx = -ballSpeedx
+        scoreB = scoreB + 1
     
     if ballLocation[1] < 0:
         ballSpeedy = -ballSpeedy
