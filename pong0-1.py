@@ -55,7 +55,7 @@ screenHeight = 600
 
 window = pygame.display.set_mode([screenWidth, screenHeight])
 
-ballSpeedx = 1
+ballSpeedx = -1
 ballSpeedy = -1
 black = (0,0,0)
 white = (255, 255, 255)
@@ -70,7 +70,8 @@ scoreA=0
 scoreB=0
 
 pygame.font.init()
-font = pygame.font.Font(None,24)
+print(pygame.font.get_fonts())
+font = pygame.font.SysFont("comicsansms", 72)
 
 while True:
     for event in pygame.event.get():
@@ -85,7 +86,13 @@ while True:
             if event.key == pygame.K_DOWN:
                 PadASpeed = 0
     if PadA.colliderect(ball):
-        ballSpeedx = -ballSpeedx
+        print(PadA.top)
+        print(ball.bottom)
+        if PadA.top == ball.bottom-ballSpeedy:
+            print("hit top of paddle")
+            ballSpeedy = -ballSpeedy
+        else:
+            ballSpeedx = -ballSpeedx
     timer.tick(60)
     window.fill(black)
     MoveBall()
